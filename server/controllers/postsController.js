@@ -8,7 +8,7 @@ const router = express.Router();
 export const getPosts = async (req, res) => {
     try {
         const posts = await Post.find();
-        console.log(posts)
+        // console.log(posts)
 
         res.status(200).json(posts);
     } catch (error) {
@@ -44,5 +44,19 @@ export const updatePost = async (req, res) => {
 
     res.json(updatedPost);
 }
+
+
+
+export const deletePost = async (req, res) => {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    await Post.findByIdAndRemove(id);
+
+    res.json({ message: "Post deleted successfully." });
+}
+
+
 
 export default router;
