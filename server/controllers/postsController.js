@@ -1,27 +1,34 @@
-import Post from "../models/Post.js";
+import express from 'express';
+
+
+import Post from '../models/Post.js';
+
+const router = express.Router();
 
 export const getPosts = async (req, res) => {
     try {
-         const posts = await Post.find();
+        const posts = await Post.find();
+        console.log(posts)
 
-         console.log(posts)
-
-        res.status(200).json(posts)
-
-    } catch (e) {
-        res.status(404).json({message: e.message})
+        res.status(200).json(posts);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
     }
-};
+}
+
 
 export const createPost = async (req, res) => {
-    const post = req.body;
+    const { title, message, selectedFile, creator, tags } = req.body;
 
-    const newPost = new Post(post);
+    const newPostMessage = new Post({ title, message, selectedFile, creator, tags })
+
     try {
-        await newPost.save();
+        await newPostMessage.save();
 
-        res.status(201).json(newPost);
-    } catch (e) {
-        res.status(409).json({message: e.message})
+        res.status(201).json(newPostMessage );
+    } catch (error) {
+        res.status(409).json({ message: error.message });
     }
-};
+}
+
+export default router;

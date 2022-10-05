@@ -1,18 +1,23 @@
 import React, {useState} from 'react';
 import useStyles from './styles';
 import FileBase from 'react-file-base64';
+import { createPost } from '../../actions/posts';
 
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 
+import {useDispatch} from "react-redux";
 
 
 const Form = () => {
     const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
-
+    const dispatch = useDispatch();
     const classes = useStyles();
 
-    const handleSubmit = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
+       await dispatch(createPost(postData));
+       console.log(postData)
     }
 
     const clear = () => {
