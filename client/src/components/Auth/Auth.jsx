@@ -5,14 +5,18 @@ import useStyles from './styles';
 import Input from './Input';
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
+import {signin, signup} from '../../actions/auth';
 
 import jwt_decode from 'jwt-decode';
 
 import {GoogleLogin, googleLogout} from "@react-oauth/google";
 
+const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
+
 const Auth = () => {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
+    const [formData, setFormData] = useState(initialState)
     const [isSignUp, setIsSignup] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
@@ -22,12 +26,18 @@ const Auth = () => {
         setShowPassword((prevShowPassword) => !prevShowPassword)
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
+        if(isSignUp) {
+            dispatch(signup(formData,history))
+        } else {
+            dispatch(signin(formData,history))
+        }
     }
 
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        setFormData({...formData, [e.target.name]: e.target.value})
     }
 
     const switchMode = () => {
