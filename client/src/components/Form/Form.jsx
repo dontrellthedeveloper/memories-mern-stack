@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import useStyles from './styles';
 import FileBase from 'react-file-base64';
-import { createPost, updatePost } from '../../actions/posts';
+import {createPost, getPosts, updatePost} from '../../actions/posts';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 
 import {useDispatch, useSelector} from "react-redux";
@@ -16,17 +16,19 @@ const Form = ({ currentId, setCurrentId }) => {
 
     useEffect(() => {
         if (post) setPostData(post);
-    }, [post]);
+        dispatch(getPosts())
+    }, [dispatch, post]);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (currentId === 0) {
-            dispatch(createPost(postData));
+        if (currentId) {
+            dispatch(updatePost(currentId, postData));
             clear();
         } else {
-            dispatch(updatePost(currentId, postData));
+            dispatch(createPost(postData));
+            dispatch(getPosts())
             clear();
         }
     }
