@@ -1,13 +1,21 @@
 import React, {useState} from 'react';
-import {Avatar, Button, Paper, Grid, Typography, Container, TextField} from '@material-ui/core';
+import {Avatar, Button, Paper, Grid, Typography, Container} from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import useStyles from './styles';
 import Input from './Input';
+import {useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
+
+import jwt_decode from 'jwt-decode';
+
+import {GoogleLogin, googleLogout} from "@react-oauth/google";
 
 const Auth = () => {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
     const [isSignUp, setIsSignup] = useState(false);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
 
     const handleShowPassword = () => {
@@ -25,6 +33,24 @@ const Auth = () => {
     const switchMode = () => {
         setIsSignup((prevIsSignUp) => !prevIsSignUp)
         handleShowPassword(false);
+    }
+
+    const googleSuccess =  async (res) => {
+        const result = await jwt_decode(res?.credential);
+        const token = res?.credential;
+        try {
+            dispatch({ type: 'AUTH', data: {result, token}})
+            history.push('/')
+            // console.log(result)
+            // console.log(token)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const googleError = (error) => {
+        console.log(error)
+        console.log('Google Sign in was unsuccessful. Try again later.')
     }
 
     return (
@@ -79,9 +105,19 @@ const Auth = () => {
                             />
                         }
                     </Grid>
-                    <Button type='submit' fullWidth variant='contained' color='primary' className={classes.submit}>
-                        {isSignUp ? 'Sign Up' : 'Sign In'}
-                    </Button>
+                    <div style={{maxWidth: '240px', margin: '0 auto'}}>
+                        <Button type='submit' fullWidth variant='contained' color='primary' className={classes.submit}>
+                            {isSignUp ? 'Sign Up' : 'Sign In'}
+                        </Button>
+                    </div>
+                    <div style={{maxWidth: '240px', margin: '0 auto', marginBottom: '20px'}}>
+                        <GoogleLogin
+                            onSuccess={googleSuccess}
+                            onError={googleError}
+                            theme='filled_blue'
+                            text={isSignUp ? "signup_with" : "signin_with"}
+                        />
+                    </div>
                     <Grid container justifyContent='flex-end'>
                         <Grid item>
                             <Button onClick={switchMode}>

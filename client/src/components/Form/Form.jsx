@@ -7,6 +7,7 @@ import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import {useDispatch, useSelector} from "react-redux";
 
 
+
 const Form = ({ currentId, setCurrentId }) => {
     const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
     const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
@@ -14,10 +15,11 @@ const Form = ({ currentId, setCurrentId }) => {
     const classes = useStyles();
 
 
+
     useEffect(() => {
         if (post) setPostData(post);
         dispatch(getPosts())
-    }, [dispatch, post]);
+    }, [dispatch ,post]);
 
 
     const handleSubmit = async (e) => {
