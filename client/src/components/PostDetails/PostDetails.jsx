@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { Paper, Typography, CircularProgress, Divider } from '@material-ui/core/';
+import { Paper, Typography, CircularProgress, Divider } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useParams, useHistory } from 'react-router-dom';
 
 import { getPost, getPostsBySearch } from '../../actions/posts';
 import useStyles from './styles';
+import CommentSection from "./CommentSection";
 
 const PostDetails = () => {
     const { post, posts, isLoading } = useSelector((state) => state.posts);
@@ -50,8 +51,8 @@ const PostDetails = () => {
                     <Divider style={{ margin: '20px 0' }} />
                     <Typography variant="body1"><strong>Realtime Chat - coming soon!</strong></Typography>
                     <Divider style={{ margin: '20px 0' }} />
-                    {/*<CommentSection post={post} />*/}
-                    {/*<Divider style={{ margin: '20px 0' }} />*/}
+                    <CommentSection post={post} />
+                    <Divider style={{ margin: '20px 0' }} />
                 </div>
                 <div className={classes.imageSection}>
                     <img className={classes.media} src={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} alt={post.title} />
