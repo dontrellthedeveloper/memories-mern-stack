@@ -1,34 +1,30 @@
-import React, {useEffect, useState} from 'react';
-import {Container, Grid, Grow, AppBar, TextField, Button, Paper} from "@material-ui/core";
-import Posts from "../Posts/Posts";
-import Form from "../Form/Form";
-import useStyles from './styles';
-import {useDispatch} from "react-redux";
-import {getPosts, getPostsBySearch} from "../../actions/posts";
+import React, { useState } from 'react';
+import { Container, Grow, Grid, AppBar, TextField, Button, Paper } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import Pagination from "../Pagination";
 import ChipInput from 'material-ui-chip-input';
 
+import { getPostsBySearch } from '../../actions/posts';
+import Posts from '../Posts/Posts';
+import Form from '../Form/Form';
+import Pagination from '../Pagination';
+import useStyles from './styles';
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
-
 const Home = () => {
-    const [currentId, setCurrentId] = useState(null);
     const classes = useStyles();
-    const dispatch = useDispatch();
     const query = useQuery();
-    const history = useHistory();
     const page = query.get('page') || 1;
     const searchQuery = query.get('searchQuery');
+
+    const [currentId, setCurrentId] = useState(0);
+    const dispatch = useDispatch();
+
     const [search, setSearch] = useState('');
     const [tags, setTags] = useState([]);
-
-    useEffect(() => {
-        dispatch(getPosts())
-    },[currentId, dispatch])
-
+    const history = useHistory();
 
     const searchPost = () => {
         if (search.trim() || tags) {
@@ -39,10 +35,9 @@ const Home = () => {
         }
     };
 
-
     const handleKeyPress = (e) => {
         if (e.keyCode === 13) {
-            // searchPost();
+            searchPost();
         }
     };
 
