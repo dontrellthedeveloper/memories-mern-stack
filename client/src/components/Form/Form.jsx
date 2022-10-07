@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import useStyles from './styles';
-import FileBase from 'react-file-base64';
+import FileBase64 from 'react-file-base64';
 import {createPost, getPosts, updatePost} from '../../actions/posts';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 
@@ -90,7 +90,7 @@ const Form = ({ currentId, setCurrentId }) => {
                     onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })}
                 />
                 <div className={classes.fileInput}>
-                    <FileBase
+                    <FileBase64
                         type="file"
                         multiple={false}
                         onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })}

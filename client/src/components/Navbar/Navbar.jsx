@@ -41,8 +41,11 @@ const Navbar = () => {
     return (
         <AppBar className={classes.appBar} position='static' color='inherit'>
             <div className={classes.brandContainer}>
-                <img src={memoriesText} alt="icon" height='45px'/>
-                <img className={classes.image} src={memoriesLogo} alt='memories' height="40px" />
+
+                <Button component={Link} to='/auth'>
+                    <img src={memoriesText} alt="icon" height='45px'/>
+                    <img className={classes.image} src={memoriesLogo} alt='memories' height="40px" />
+                </Button>
             </div>
 
 
