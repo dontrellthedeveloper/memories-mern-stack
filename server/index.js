@@ -22,9 +22,14 @@ app.use(cors());
 app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
 
+app.get('/', (req, res) => {
+    res.send('APP IS RUNNING')
+});
+
+
 const PORT = process.env.PORT|| 3010;
 
-mongoose.connect(process.env.CONNECTION_URL, {
+mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

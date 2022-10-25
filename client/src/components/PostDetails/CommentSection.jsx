@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { commentPost } from '../../actions/posts';
 import useStyles from './styles';
+import {Divider} from "@material-ui/core";
 
 const CommentSection = ({ post }) => {
     const user = JSON.parse(localStorage.getItem('profile'));
@@ -24,6 +25,18 @@ const CommentSection = ({ post }) => {
 
     return (
         <div>
+            {user?.result?.name && (
+
+                <div style={{ width: '100%' }}>
+                    <Typography gutterBottom variant="h6">Write a comment</Typography>
+                    <TextField fullWidth minRows={4} variant="outlined" label="Comment" multiline value={comment} onChange={(e) => setComment(e.target.value)} />
+                    <br />
+                    <Button style={{ marginTop: '10px' }} fullWidth disabled={!comment.length} color="primary" variant="contained" onClick={handleComment}>
+                        Comment
+                    </Button>
+                </div>
+            )}
+            {/*<Divider style={{ margin: '20px 0' }} />*/}
             <div className={classes.commentsOuterContainer}>
                 <div className={classes.commentsInnerContainer}>
                     <Typography gutterBottom variant="h6">Comments</Typography>
@@ -35,18 +48,19 @@ const CommentSection = ({ post }) => {
                     ))}
                     <div ref={commentsRef} />
                 </div>
-                {user?.result?.name && (
+                {/*{user?.result?.name && (*/}
 
-                    <div style={{ width: '55%' }}>
-                        <Typography gutterBottom variant="h6">Write a comment</Typography>
-                        <TextField fullWidth minRows={4} variant="outlined" label="Comment" multiline value={comment} onChange={(e) => setComment(e.target.value)} />
-                        <br />
-                        <Button style={{ marginTop: '10px' }} fullWidth disabled={!comment.length} color="primary" variant="contained" onClick={handleComment}>
-                            Comment
-                        </Button>
-                    </div>
-                )}
+                {/*    <div style={{ width: '100%' }}>*/}
+                {/*        <Typography gutterBottom variant="h6">Write a comment</Typography>*/}
+                {/*        <TextField fullWidth minRows={4} variant="outlined" label="Comment" multiline value={comment} onChange={(e) => setComment(e.target.value)} />*/}
+                {/*        <br />*/}
+                {/*        <Button style={{ marginTop: '10px' }} fullWidth disabled={!comment.length} color="primary" variant="contained" onClick={handleComment}>*/}
+                {/*            Comment*/}
+                {/*        </Button>*/}
+                {/*    </div>*/}
+                {/*)}*/}
             </div>
+
         </div>
     );
 };

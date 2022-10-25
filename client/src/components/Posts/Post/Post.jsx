@@ -62,11 +62,25 @@ const Post = ({post, setCurrentId}) => {
                 className={classes.cardAction}
                 onClick={openPost}
             >
-                <CardMedia className={classes.media} image={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} title={post.title} />
+                <CardMedia className={classes.media} image={post.selectedFile.url || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} title={post.title} />
                 <div className={classes.overlay}>
-                    <Typography variant="h6">{post.name}</Typography>
-                    <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
+                    <Typography variant="h6" style={{fontSize: '.975rem', fontWeight: '600'}}>
+                        {post.tags.slice(2,3).map((tag) => `${tag.charAt(0).toUpperCase()}${tag.slice(1)}`)}
+                        {', '}
+                        {post.tags.slice(1,2).map((tag) => `${tag.charAt(0).toUpperCase()}${tag.slice(1)}`)}
+                    </Typography>
+                    {/*<Typography variant="h6" style={{fontSize: '.975rem', fontWeight: '600'}}>*/}
+                    {/*    {post.name}*/}
+                    {/*</Typography>*/}
+                    <Typography variant="body2" style={{fontSize: '.775rem'}}>{moment(post.createdAt).fromNow()}</Typography>
                 </div>
+                {/*<div className={classes.overlay3}>*/}
+                {/*    <Typography variant="h6" style={{fontSize: '.775rem', fontWeight: '600'}}>*/}
+                {/*        {post.tags.slice(2,3).map((tag) => `${tag.charAt(0).toUpperCase()}${tag.slice(1)}`)}*/}
+                {/*        {', '}*/}
+                {/*        {post.tags.slice(1,2).map((tag) => `${tag.charAt(0).toUpperCase()}${tag.slice(1)}`)}*/}
+                {/*    </Typography>*/}
+                {/*</div>*/}
                 {(user?.result?.sub === post?.creator || user?.result?._id === post?.creator) && (
                     <div className={classes.overlay2} name="edit">
                         <Button
@@ -84,9 +98,13 @@ const Post = ({post, setCurrentId}) => {
                 <div className={classes.details}>
                     <Typography variant="body2" color="textSecondary" component="h2">{post.tags.map((tag) => `#${tag} `)}</Typography>
                 </div>
-                <Typography className={classes.title} gutterBottom variant="h5" component="h2">{post.title}</Typography>
+                <Typography className='postTitle' gutterBottom variant="h5" component="h2" style={{fontSize: '1.2rem', fontWeight: '600'}}>{post.title}</Typography>
                 <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">{post.message}</Typography>
+                    <Typography className='postBody' variant="body2" color="textSecondary" component="p"
+                                style={{maxWidth: '280px', margin: '0 auto', textAlign: 'center'}}
+                    >
+                        {post.message}
+                    </Typography>
                 </CardContent>
             </ButtonBase>
             <CardActions className={classes.cardActions}>

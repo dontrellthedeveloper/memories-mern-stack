@@ -16,10 +16,26 @@ export default makeStyles((theme) => ({
             flexDirection: 'column',
         },
     },
+    cardImg: {
+        // display: 'flex',
+        width: '100%',
+        [theme.breakpoints.down('sm')]: {
+            flexWrap: 'wrap',
+            flexDirection: 'column',
+        },
+        justifyContent: 'center'
+    },
+    imageSection2: {
+        // marginLeft: '20px',
+        [theme.breakpoints.down('sm')]: {
+            marginLeft: 0,
+        },
+    },
     section: {
         borderRadius: '20px',
         margin: '10px',
         flex: 1,
+        textAlign: 'center'
     },
     imageSection: {
         marginLeft: '20px',
@@ -41,14 +57,32 @@ export default makeStyles((theme) => ({
         borderRadius: '15px',
         height: '39vh',
     },
+    postTitle: {
+        marginBottom: '20px'
+    },
+    postMessage: {
+        padding: '30px',
+
+    },
+    postTags: {
+        marginTop: '30px',
+      marginBottom: '30px'
+    },
+    recommendedPostTags: {
+
+        // marginTop: '30px',
+        // marginBottom: '30px'
+    },
     commentsOuterContainer: {
         display: 'flex',
         justifyContent: 'space-between',
+        paddingTop: '20px'
     },
     commentsInnerContainer: {
         height: '200px',
         overflowY: 'auto',
         marginRight: '30px',
-        width: '45%'
+        width: '100%',
+        display: 'block'
     },
 }));

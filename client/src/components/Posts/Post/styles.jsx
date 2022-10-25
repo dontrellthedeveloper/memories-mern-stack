@@ -33,12 +33,20 @@ export default makeStyles({
         right: '20px',
         color: 'white',
     },
+    overlay3: {
+        position: 'absolute',
+        top: '170px',
+        left: '20px',
+        // left: '40%',
+        color: 'white',
+    },
     grid: {
         display: 'flex',
     },
     details: {
         display: 'flex',
-        justifyContent: 'space-between',
+        // justifyContent: 'space-between',
+        justifyContent: 'center',
         margin: '20px',
     },
     title: {

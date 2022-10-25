@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {AppBar, Avatar, Button, Toolbar, Typography} from "@material-ui/core";
 import memories from "../../images/memories.png";
 import memoriesLogo from "../../images/memoriesLogo.png";
-import memoriesText from "../../images/memoriesText.png";
+import memoriesText from "../../images/memories-exp.png";
 import {useDispatch} from "react-redux";
 import {Link, useHistory, useLocation} from "react-router-dom";
 import useStyles from "./styles";
@@ -23,7 +23,7 @@ const Navbar = () => {
         setUser(null)
     }
 
-    console.log(user)
+    // console.log(user)
 
     useEffect(() => {
         const token = user?.token;
@@ -43,8 +43,9 @@ const Navbar = () => {
             <div className={classes.brandContainer}>
 
                 <Button component={Link} to='/posts'>
-                    <img src={memoriesText} alt="icon" height='45px'/>
                     <img className={classes.image} src={memoriesLogo} alt='memories' height="40px" />
+                    <img src={memoriesText} alt="icon" height='45px'/>
+
                 </Button>
             </div>
 

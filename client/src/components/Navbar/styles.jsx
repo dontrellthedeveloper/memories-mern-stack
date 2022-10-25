@@ -20,9 +20,14 @@ export default makeStyles((theme) => ({
         fontSize: '2em',
         fontWeight: 300,
     },
+    // image: {
+    //     marginLeft: '10px',
+    //     marginTop: '5px',
+    // },
     image: {
-        marginLeft: '10px',
-        marginTop: '5px',
+        // marginLeft: '10px',
+        // marginTop: '5px',
+        marginRight: '10px'
     },
     toolbar: {
         display: 'flex',

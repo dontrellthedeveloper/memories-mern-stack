@@ -13,7 +13,8 @@ const App = () => {
     const user = JSON.parse(localStorage.getItem('profile'))
 
     return (
-         <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}>
+         // <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}>
+        <GoogleOAuthProvider clientId='589342807117-jetqofrvfejhff2ifccdgsce4jbaekha.apps.googleusercontent.com'>
             <BrowserRouter>
                 <Container maxWidth='xl'>
                     <Navbar/>
@@ -22,7 +23,8 @@ const App = () => {
                         <Route path='/posts' exact component={Home}/>
                         <Route path='/posts/search' exact component={Home}/>
                         <Route path='/posts/:id' component={PostDetails}/>
-                        <Route path="/auth" exact component={() => (!user ? <Auth /> : <Redirect to="/posts" />)} />
+                        {/*<Route path="/auth" exact component={() => (!user ? <Auth /> : <Redirect to="/posts" />)} />*/}
+                        <Route path="/auth" exact component={Auth} />
                     </Switch>
                 </Container>
             </BrowserRouter>
