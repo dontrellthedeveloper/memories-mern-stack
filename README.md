@@ -37,7 +37,7 @@
 <h3 align="center">Explocation Travel Memories - MERN Application</h3>
 
   <p align="center">
-    Olivia Wilson is a Full Stack E-Commerce Store. This stack includes - MongoDB, Express, React, Redux, Node and Nginx.
+    Explocation is a Full Stack Travel Memories Application. This stack includes - React, Node, Redux, Material UI, Google Login, MongoDB, Cloudinary, Netlify ,Digital Ocean, and Nginx.
     <br />
     <a href="https://github.com/dontrellthedeveloper/memories-mern-stack"><strong>Explore the docs »</strong></a>
     <br />
@@ -111,6 +111,7 @@
 * [![GoogleLogin][GoogleLogin]][GoogleLogin-url]
 * [![MongoDB][MongoDB]][MongoDB-url]
 * [![Cloudinary][Cloudinary]][Cloudinary-url]
+* [![Netlify][Netlify]][Netlify-url]
 * [![DigitalOcean][DigitalOcean]][DigitalOcean-url]
 * [![Nginx][Nginx]][Nginx-url]
 
@@ -336,6 +337,11 @@ Project Link: [https://github.com/dontrellthedeveloper/memories-mern-stack](http
 [product-screenshot3]: images/screenshot4.png
 [Next.js]: https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white
 [Next-url]: https://nextjs.org/
+
+
+[Netlify]: https://img.shields.io/badge/Netlify-111111?style=for-the-badge&logo=netlify&logoColor=00C7B7
+[Netlify-url]: https://www.netlify.com/
+
 
 [Node.js]: https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white
 [Node-url]: https://nodejs.org/
