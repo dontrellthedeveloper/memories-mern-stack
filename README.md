@@ -34,7 +34,7 @@
     <img src="images/logo3.png" alt="Logo" width="200" >
   </a>
 
-<h3 align="center">Explocation Travel Info - MERN Application</h3>
+<h3 align="center">Explocation Travel Memories - MERN Application</h3>
 
   <p align="center">
     Olivia Wilson is a Full Stack E-Commerce Store. This stack includes - MongoDB, Express, React, Redux, Node and Nginx.
@@ -42,7 +42,7 @@
     <a href="https://github.com/dontrellthedeveloper/memories-mern-stack"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://oliviawilson.dontrelldev.com">View Demo</a>
+    <a href="https://explocation.dontrelldev.com">View Demo</a>
     ·
     <a href="https://github.com/dontrellthedeveloper/memories-mern-stack/issues">Report Bug</a>
     ·
